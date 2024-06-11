@@ -6,17 +6,16 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:35:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/11 16:37:56 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:35:19 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 # include "../libft/libft.h"
-# include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <fcntl.h>
+# include <pthread.h>
 # include <unistd.h>
 
 /*
@@ -24,6 +23,7 @@
 #								DEFINE								#
 #####################################################################
 */
+# define MSG_ERROR "\033[1;31m ERROR :\033[0m"
 
 /*
 #####################################################################
@@ -31,17 +31,22 @@
 #####################################################################
 */
 
-typedef struct s_philo
+typedef struct s_config
 {
-	int		test;
-}	t_philo;
+	int	error;
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	num_to_eat;
+}	t_conf;
 
 /*
 #####################################################################
 #						FUNCTIONS PROTOTYPE							#
 #####################################################################
 */
-/*----------------				PROMPT				---------------*/
-
+/*----------------				PARSE				---------------*/
+t_conf	parse_party(int c, char **v);
 
 #endif

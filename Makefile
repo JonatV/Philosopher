@@ -6,7 +6,7 @@
 #    By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 16:55:40 by jveirman          #+#    #+#              #
-#    Updated: 2024/06/11 16:56:02 by jveirman         ###   ########.fr        #
+#    Updated: 2024/06/11 17:06:39 by jveirman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ BUILD_DIR		:=	./build
 SRC_DIR			:=	./sources
 
 #-----------------				SOURCES				----------------#
-SRCS_PHILO		=	$(SRC_DIR)/main.c
+SRCS_PHILO		=	$(SRC_DIR)/main.c \
+					$(SRC_DIR)/parser.c
 
 #-----------------				OBJECTS				----------------#
 # OBJS_FRONTEND	=	$(SRCS_FRONTEND:%.c=$(BUILD_DIR)/%.o)

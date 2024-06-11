@@ -3,5 +3,6 @@ token.private
 .vscode
 *.o
 *.a
-philo
+philosophers
 a.out
+*.dSYM
