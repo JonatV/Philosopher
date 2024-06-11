@@ -1,0 +1,7 @@
+token.private
+.DS_Store
+.vscode
+*.o
+*.a
+philo
+a.out
