@@ -12,6 +12,7 @@
 
 #include "../includes/philo.h"
 
+
 int	main(int c, char *v[])
 {
 	t_conf	config;
@@ -19,5 +20,6 @@ int	main(int c, char *v[])
 	config = parse_party(c, v);
 	if (config.error)
 		return (EXIT_FAILURE);
+	
 	return (0);
 }

@@ -24,6 +24,12 @@
 #####################################################################
 */
 # define MSG_ERROR "\033[1;31m ERROR :\033[0m"
+# define E_MUCH " Wrong number of argument"
+# define E_NUM_EAT " Philosophers must eat at least 1 meal."
+# define E_NUM_PHILO " Philosophers must be at least 1."
+# define E_T_DIE " Philosophers must survive at least for 1ms."
+# define E_T_EAT " Philosophers must eat at least for 1ms."
+# define E_T_SLEEP " Philosophers must sleep at least for 1ms."
 
 /*
 #####################################################################
@@ -34,7 +40,7 @@
 typedef struct s_config
 {
 	int	error;
-	int	number_of_philosophers;
+	int	num_philo;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
