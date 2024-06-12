@@ -6,7 +6,7 @@
 #    By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 16:55:40 by jveirman          #+#    #+#              #
-#    Updated: 2024/06/12 20:13:00 by jveirman         ###   ########.fr        #
+#    Updated: 2024/06/12 20:33:20 by jveirman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,8 +76,8 @@ create_dir:	## Build the directory that will gather .o files
 	fi
 
 #-----------------					DEV				----------------#
-$(FILE).c:
-	$(CC) $(CFLAGS) -o $(SRC_DEV_DIR)/$(basename $@) $(SRC_DEV_DIR)/$@
+$(FILE):
+	$(CC) $(CFLAGS_DEV) -o $(SRC_DEV_DIR)/$(basename $@) $(SRC_DEV_DIR)/$@.c
 
 dev: $(FILE)
 
