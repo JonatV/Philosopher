@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:05:45 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/11 17:36:28 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:41:41 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ static t_conf	error_parse(t_conf *config, char *msg)
 static t_conf	check_config(t_conf *config) // wip: should it return a *t_conf
 {
 	if (config->num_philo <= 0)
-		return (error_parse(&config, E_NUM_PHILO));
+		return (error_parse(config, E_NUM_PHILO));
 	if (config->time_to_die <= 0)
-		return (error_parse(&config, E_T_DIE));
+		return (error_parse(config, E_T_DIE));
 	if (config->time_to_eat <= 0)
-		return (error_parse(&config, E_T_EAT));
+		return (error_parse(config, E_T_EAT));
 	if (config->time_to_sleep <= 0)
-		return (error_parse(&config, E_T_SLEEP));
+		return (error_parse(config, E_T_SLEEP));
+	return (*config);
 }
 
 t_conf	parse_party(int c, char **v)
