@@ -6,7 +6,7 @@
 #    By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 16:55:40 by jveirman          #+#    #+#              #
-#    Updated: 2024/06/11 17:06:39 by jveirman         ###   ########.fr        #
+#    Updated: 2024/06/12 13:11:29 by jveirman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ NAME			=	philosophers
 #-----------------				COMPILING			----------------#
 CC				=	cc
 OUT				=	-o $(NAME)
-CFLAGS			=	-Wall -Wextra -Werror -I./includes
-CFLAGS_DEV		=	-Wall -Wextra -Werror -I./includes -fsanitize=address -g
+CFLAGS			=	-Wall -Wextra -Werror -I./includes -pthread
+CFLAGS_DEV		=	-Wall -Wextra -Werror -I./includes -pthread -fsanitize=thread -ggdb3
 
 RM				=	rm -rf
 
@@ -33,23 +33,27 @@ include				$(MKFILES)
 
 #-----------------				DIRECTORIES			----------------#
 BUILD_DIR		:=	./build
-SRC_DIR			:=	./sources
+SRC_PHILO_DIR	:=	./sources
+SRC_DEV_DIR		:=	./dev
 
 #-----------------				SOURCES				----------------#
-SRCS_PHILO		=	$(SRC_DIR)/main.c \
-					$(SRC_DIR)/parser.c
+SRCS_PHILO		=	$(SRC_PHILO_DIR)/main.c \
+					$(SRC_PHILO_DIR)/parser.c
 
 #-----------------				OBJECTS				----------------#
 # OBJS_FRONTEND	=	$(SRCS_FRONTEND:%.c=$(BUILD_DIR)/%.o)
 # OBJS_EXEC	=	$(SRCS_EXEC:%.c=$(BUILD_DIR)/%.o)
 OBJS_PHILO		=	$(patsubst $(SRC_PHILO_DIR)/%.c, $(BUILD_DIR)/philo_%.o, $(SRCS_PHILO))
 
+#-----------------				DEV					----------------#
+FILE			:=	$(word 2, $(MAKECMDGOALS))
+
 #===================================================================#
 #								TARGETS								#
 #===================================================================#
 
 .SILENT: 
-.PHONY: help all art create_dir re clean fclean how_to
+.PHONY: help all art create_dir re clean fclean how_to dev
 
 all: create_dir	$(NAME)## Command to start all the compiling
 	make art
@@ -71,6 +75,12 @@ create_dir:	## Build the directory that will gather .o files
 		mkdir -p $(BUILD_DIR); \
 		echo "Build folder has been created"; \
 	fi
+
+#-----------------					DEV				----------------#
+$(FILE).c:
+	$(CC) $(CFLAGS) -o $(SRC_DEV_DIR)/$(basename $@) $(SRC_DEV_DIR)/$@
+
+dev: $(FILE)
 
 #-----------------				ART/LOADING			----------------#
 art:	## ASCII art for pilosophers
