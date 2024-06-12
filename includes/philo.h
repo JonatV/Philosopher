@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:35:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/11 17:35:19 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/12 21:19:27 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ typedef struct s_config
 	int	time_to_sleep;
 	int	num_to_eat;
 }	t_conf;
+
+typedef struct s_philo
+{
+	pthread_t	thread;
+}	t_philo;
+
+typedef struct	s_program
+{
+	int			is_dead;
+	t_philo		*philos;
+}	t_program;
 
 /*
 #####################################################################
