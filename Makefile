@@ -6,7 +6,7 @@
 #    By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 16:55:40 by jveirman          #+#    #+#              #
-#    Updated: 2024/06/12 13:11:29 by jveirman         ###   ########.fr        #
+#    Updated: 2024/06/12 20:13:00 by jveirman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,11 @@ FILE			:=	$(word 2, $(MAKECMDGOALS))
 #								TARGETS								#
 #===================================================================#
 
-.SILENT: 
+.SILENT:
 .PHONY: help all art create_dir re clean fclean how_to dev
 
-all: create_dir	$(NAME)## Command to start all the compiling
-	make art
-
+all: create_dir	$(NAME) art## Command to start all the compiling
+	
 #-----------------				COMPILE OBJECTS		----------------#
 $(BUILD_DIR)/philo_%.o: $(SRC_PHILO_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -84,7 +83,11 @@ dev: $(FILE)
 
 #-----------------				ART/LOADING			----------------#
 art:	## ASCII art for pilosophers
-	echo $(ART_AFTER_COMPILE)
+	@for part in $(subst O,,$(ART_AFTER_COMPILE)); do \
+        echo "$$part"; \
+		sleep .1; \
+    done
+# echo $(ART_AFTER_COMPILE)
 
 #-----------------				COMMANDS			----------------#
 clean:	## Remove all the .o files from build directory (build include)
