@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:35:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 19:35:47 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:49:18 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_philo
 	pthread_t			thread;
 	int					current;
 	int					time_to_sleep;
-	long				*start_time;
+	long				start_time;
 	t_mutex				*m_dead;
 	t_mutex				*m_meal;
 	t_mutex				*m_msg;
