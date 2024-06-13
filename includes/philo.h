@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 /*
 #####################################################################
@@ -87,6 +88,10 @@ t_conf	parse_party(int c, char **v);
 
 /*----------------				INIT				---------------*/
 void	init(t_prog *prog, t_conf *conf, t_mutex *m_forks, t_philo *philos);
+
+/*----------------				UTILS				---------------*/
+void	state_msg(char *str, t_philo *philo);
+long	what_time_is_it();
 
 /*----------------				END					---------------*/
 void	end(t_prog *prog, t_mutex *m_mutex);
