@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:59:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 19:01:13 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:31:42 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	init_philos(t_prog *prog, t_mutex *m_mutex, t_philo *philos)
 	i = 0;
 	while (i < prog->num_philo)
 	{
-		philos[i].current = i;
+		philos[i].current = i + 1;
+		philos[i].program = prog;
+		philos[i].time_to_sleep = prog->conf->time_to_sleep;
 		philos[i].start_time = &prog->start_time;
 		philos[i].num_eaten = 0;
 		philos[i].need_for_burial = 0;
