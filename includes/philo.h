@@ -24,6 +24,7 @@
 #####################################################################
 */
 # define MSG_ERROR "\033[1;31m ERROR :\033[0m"
+# define E_THRCREATE " Couldn't create the thread."
 # define E_MUCH " Wrong number of argument"
 # define E_NUM_EAT " Philosophers must eat at least 1 meal."
 # define E_NUM_PHILO " Philosophers must be at least 1 and max 200."
@@ -86,5 +87,8 @@ t_conf	parse_party(int c, char **v);
 
 /*----------------				INIT				---------------*/
 void	init(t_prog *prog, t_conf *conf, t_mutex *m_forks, t_philo *philos);
+
+/*----------------				THREAD				---------------*/
+void	create(t_prog *prog, t_mutex *m_forks);
 
 #endif
