@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:35:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 19:49:18 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:04:16 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define MSG_EAT " is eating."
 # define MSG_THINK " is thinking."
 # define MSG_FORK " has grab a fork."
+# define MSG_L_FORK " has grab left fork."
+# define MSG_R_FORK " has grab right fork."
 
 /*
 #####################################################################
@@ -60,6 +62,8 @@ typedef struct s_philo
 	pthread_t			thread;
 	int					current;
 	int					time_to_sleep;
+	int					time_to_eat;
+	long				prev_meal;
 	long				start_time;
 	t_mutex				*m_dead;
 	t_mutex				*m_meal;
