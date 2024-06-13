@@ -38,7 +38,8 @@ SRC_DEV_DIR		:=	./dev
 
 #-----------------				SOURCES				----------------#
 SRCS_PHILO		=	$(SRC_PHILO_DIR)/main.c \
-					$(SRC_PHILO_DIR)/parser.c
+					$(SRC_PHILO_DIR)/parser.c \
+					$(SRC_PHILO_DIR)/init.c \
 
 #-----------------				OBJECTS				----------------#
 # OBJS_FRONTEND	=	$(SRCS_FRONTEND:%.c=$(BUILD_DIR)/%.o)
@@ -55,7 +56,7 @@ FILE			:=	$(word 2, $(MAKECMDGOALS))
 .SILENT:
 .PHONY: help all art create_dir re clean fclean how_to dev
 
-all: create_dir	$(NAME) art## Command to start all the compiling
+all: create_dir	$(NAME) art use## Command to start all the compiling
 	
 #-----------------				COMPILE OBJECTS		----------------#
 $(BUILD_DIR)/philo_%.o: $(SRC_PHILO_DIR)/%.c
@@ -107,3 +108,9 @@ help:	## Show the commands
 
 how_to: ## Command to help you to add update to the makefile
 	echo "No information yet."
+
+use:
+	echo "./philosophers PHILOS DIE EAT SLEEP MEAL"
+
+run:
+	./philosophers 50 800 200 200 7

@@ -36,6 +36,7 @@
 #							STRUCTURE								#
 #####################################################################
 */
+typedef pthread_mutex_t	t_mutex;
 
 typedef struct s_config
 {
@@ -49,14 +50,30 @@ typedef struct s_config
 
 typedef struct s_philo
 {
-	pthread_t	thread;
+	pthread_t			thread;
+	int					current;
+	long				*start_time;
+	t_mutex				*m_dead;
+	t_mutex				*m_meal;
+	t_mutex				*m_msg;
+	t_mutex				*m_left_fork;
+	t_mutex				*m_right_fork;
+	int					need_for_burial;
+	int					num_eaten;
+	struct s_program	*program;
 }	t_philo;
 
-typedef struct	s_program
+typedef struct s_program
 {
 	int			is_dead;
+	int			num_philo;
+	long		start_time;
 	t_philo		*philos;
-}	t_program;
+	t_mutex		m_dead;
+	t_mutex		m_meal;
+	t_mutex		m_msg;
+	t_conf		*conf;
+}	t_prog;
 
 /*
 #####################################################################
@@ -65,5 +82,8 @@ typedef struct	s_program
 */
 /*----------------				PARSE				---------------*/
 t_conf	parse_party(int c, char **v);
+
+/*----------------				INIT				---------------*/
+void	init(t_prog *prog, t_conf *conf, t_mutex *m_forks, t_philo *philos);
 
 #endif
