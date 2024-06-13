@@ -33,6 +33,10 @@
 # define E_T_EAT " Philosophers must eat at least for 1ms."
 # define E_T_SLEEP " Philosophers must sleep at least for 1ms."
 # define MAX_PHILO 200
+# define MSG_SLEEP " is sleeping."
+# define MSG_EAT " is eating."
+# define MSG_THINK " is thinking."
+# define MSG_FORK " has grab a fork."
 
 /*
 #####################################################################
@@ -92,6 +96,9 @@ void	init(t_prog *prog, t_conf *conf, t_mutex *m_forks, t_philo *philos);
 /*----------------				UTILS				---------------*/
 void	state_msg(char *str, t_philo *philo);
 long	what_time_is_it();
+
+/*----------------				LOGIC				---------------*/
+void	*routine(void *data);
 
 /*----------------				END					---------------*/
 void	end(t_prog *prog, t_mutex *m_mutex);

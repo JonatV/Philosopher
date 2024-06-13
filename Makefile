@@ -6,7 +6,7 @@
 #    By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 16:55:40 by jveirman          #+#    #+#              #
-#    Updated: 2024/06/12 20:33:20 by jveirman         ###   ########.fr        #
+#    Updated: 2024/06/13 19:31:01 by jveirman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS_PHILO		=	$(SRC_PHILO_DIR)/main.c \
 					$(SRC_PHILO_DIR)/init.c \
 					$(SRC_PHILO_DIR)/end.c \
 					$(SRC_PHILO_DIR)/utils.c \
+					$(SRC_PHILO_DIR)/logic.c \
 					$(SRC_PHILO_DIR)/thread.c
 
 #-----------------				OBJECTS				----------------#
@@ -63,7 +64,7 @@ all: create_dir	$(NAME) art use## Command to start all the compiling
 	
 #-----------------				COMPILE OBJECTS		----------------#
 $(BUILD_DIR)/philo_%.o: $(SRC_PHILO_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS_DEV) -c $< -o $@
 
 #-----------------				BUILD PHILO			----------------#
 $(NAME): $(OBJS_PHILO)
@@ -89,7 +90,7 @@ dev: $(FILE)
 art:	## ASCII art for pilosophers
 	@for part in $(subst O,,$(ART_AFTER_COMPILE)); do \
         echo "$$part"; \
-		sleep .1; \
+		sleep .01; \
     done
 # echo $(ART_AFTER_COMPILE)
 
