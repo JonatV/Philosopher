@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 16:49:47 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 19:02:02 by jveirman         ###   ########.fr       */
+/*   Created: 2024/06/13 15:41:27 by jveirman          #+#    #+#             */
+/*   Updated: 2024/06/13 17:18:43 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int c, char *v[])
+void	end(t_prog *prog, t_mutex *forks)
 {
-	t_conf			config;
-	t_prog			program;
-	t_philo			philos[MAX_PHILO];
-	t_mutex			m_forks[MAX_PHILO];
+	int	i;
 
-	config = parse_party(c, v);
-	if (config.error)
-		return (EXIT_FAILURE);
-	init(&program, &config, m_forks, philos);
-	create(&program, m_forks);
-	end(&program, m_forks);
-	return (0);
+	i = 0;
+	while (i < prog->num_philo)
+	{
+		pthread_mutex_destroy(&forks[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&prog->m_dead);
+	pthread_mutex_destroy(&prog->m_meal);
+	pthread_mutex_destroy(&prog->m_msg);
 }

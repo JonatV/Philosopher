@@ -88,6 +88,9 @@ t_conf	parse_party(int c, char **v);
 /*----------------				INIT				---------------*/
 void	init(t_prog *prog, t_conf *conf, t_mutex *m_forks, t_philo *philos);
 
+/*----------------				END					---------------*/
+void	end(t_prog *prog, t_mutex *m_mutex);
+
 /*----------------				THREAD				---------------*/
 void	create(t_prog *prog, t_mutex *m_forks);
 

@@ -40,6 +40,7 @@ SRC_DEV_DIR		:=	./dev
 SRCS_PHILO		=	$(SRC_PHILO_DIR)/main.c \
 					$(SRC_PHILO_DIR)/parser.c \
 					$(SRC_PHILO_DIR)/init.c \
+					$(SRC_PHILO_DIR)/end.c \
 					$(SRC_PHILO_DIR)/thread.c
 
 #-----------------				OBJECTS				----------------#
