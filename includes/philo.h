@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:35:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 20:04:16 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:51:21 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #####################################################################
 */
 # define MSG_ERROR "\033[1;31m ERROR :\033[0m"
+# define MSG_GOOD "\033[1;42m GOOD !\033[0m"
 # define E_THRCREATE " Couldn't create the thread."
 # define E_MUCH " Wrong number of argument"
 # define E_NUM_EAT " Philosophers must eat at least 1 meal."
@@ -61,27 +62,31 @@ typedef struct s_philo
 {
 	pthread_t			thread;
 	int					current;
+	int					*end_marker;
 	int					time_to_sleep;
 	int					time_to_eat;
 	long				prev_meal;
 	long				start_time;
-	t_mutex				*m_dead;
+	t_mutex				*m_finish;
 	t_mutex				*m_meal;
 	t_mutex				*m_msg;
 	t_mutex				*m_left_fork;
 	t_mutex				*m_right_fork;
 	int					need_for_burial;
 	int					num_eaten;
+	int					num_to_eat;
+	int					num_philos;
 	struct s_program	*program;
 }	t_philo;
 
 typedef struct s_program
 {
 	int			is_dead;
+	int			end_marker;
 	int			num_philo;
 	long		start_time;
 	t_philo		*philos;
-	t_mutex		m_dead;
+	t_mutex		m_finish;
 	t_mutex		m_meal;
 	t_mutex		m_msg;
 	t_conf		*conf;
