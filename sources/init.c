@@ -6,7 +6,7 @@
 /*   By: jveirman <jveirman@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:59:57 by jveirman          #+#    #+#             */
-/*   Updated: 2024/06/13 20:04:40 by jveirman         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:32:02 by jveirman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	init_philos(t_prog *prog, t_mutex *m_mutex, t_philo *philos)
 		philos[i].start_time = what_time_is_it();
 		philos[i].num_eaten = 0;
 		philos[i].need_for_burial = 0;
+		philos[i].m_msg = &prog->m_msg;
 		philos[i].m_left_fork = &m_mutex[i];
 		if (i)
 			philos[i].m_right_fork = &m_mutex[i - 1];
